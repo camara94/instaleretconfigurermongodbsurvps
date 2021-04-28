@@ -112,3 +112,51 @@ Tapez maintenant <code>exit</code> pour quitter le shell MongoDB.
 </code>
 
 Et vous êtes de retour sur le shell de Linux.
+
+### Étape 4 - Activez l'authentification MongoDB
+Modifiez le fichier de service mongodb **'/lib/systemd/system/mongod.service'** avec votre éditeur.
+
+<code>
+    <pre>
+        sudo nano /lib/systemd/system/mongod.service
+    </pre>
+</code>
+
+A la ligne 9 **ExecStart**, ajoutez la nouvelle option **--auth**.
+
+<code>
+    <pre>
+        ExecStart=/usr/bin/mongod --auth --config /etc/mongod.conf
+    </pre>
+</code>
+
+Enregistrez le fichier de service et quittez nano.
+
+Rechargez le **service systemd**:
+
+<code>
+    <pre>
+        sudo systemctl daemon-reload
+    </pre>
+</code>
+
+### Étape 5 - Redémarrez MongoDB et essayez de vous connecter
+
+Redémarrez maintenant MongoDB et connectez-vous avec l'utilisateur créé.
+
+<code>
+    <pre>
+        sudo service mongod restart
+    </pre>
+</code>
+
+et connectez-vous au shell MongoDB avec cette commande:
+
+<code>
+    <pre>
+        mongo -u admin -p admin123 --authenticationDatabase admin
+    </pre>
+</code>
+
+et vous verrez la sortie comme ceci:
+![3](images/3.png)
