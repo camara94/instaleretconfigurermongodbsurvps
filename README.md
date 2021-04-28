@@ -51,3 +51,39 @@ Démarrez **MongoDB** et ajoutez-le en tant que service à démarrer au démarra
         sudo systemctl enable mongod
     </pre>
 </code>
+
+Vérifiez maintenant que MongoDB a été démarré sur le port 27017 avec la commande netstat.
+
+<code>
+    <pre>
+        sudo netstat -plntu
+    </pre>
+</code>
+
+![image 1](images/1.png)
+
+## Configurer le nom d'utilisateur et le mot de passe MongoDB
+
+
+<code>
+    <pre>
+        mongo
+    </pre>
+</code>
+
+Avant de configurer un nom d'utilisateur et un mot de passe pour MongoDB, vous devez ouvrir le shell MongoDB sur votre serveur. Vous pouvez vous connecter en tapant:
+
+<code>
+    <pre>
+        mongo
+    </pre>
+</code>
+
+Si vous obtenez une erreur Échec de l'initialisation globale: BadValue Non valide ou aucun paramètre régional utilisateur n'est défini. Veuillez vous assurer que les variables d'environnement LANG et / ou LC_ * sont correctement définies, essayez la commande:
+
+<code>
+    <pre>
+        export LC_ALL=C
+        mongo 
+    </pre>
+</code>
