@@ -199,7 +199,47 @@ Pour autoriser l'accès de l'IP externe 192.168.1.10 à MongoDB, utilisez cette 
 
 <code>
     <pre>
-        sudo ufw allow ssh
-        sudo ufw enable
+        sudo ufw allow from 152.228.217.119 to any port 27017
     </pre>
 </code>
+
+Remplacez l'adresse IP dans la commande ci-dessus par l'IP externe que vous souhaitez autoriser à accéder à MongoDB.
+
+Si vous souhaitez ouvrir le port MongoDB pour n'importe quelle adresse IP, par exemple si vous l'exécutez sur un réseau local et que tous les systèmes de ce réseau pourront accéder à MongoDB, utilisez cette commande:
+
+<code>
+    <pre>
+        sudo ufw allow 27017
+    </pre>
+</code>
+
+MongoDB écoute localhost par défaut, pour rendre la base de données accessible de l'extérieur, nous devons la reconfigurer pour écouter également sur l'adresse IP du serveur.
+
+Ouvrez le fichier mongod.conf dans l'éditeur nano:
+
+<code>
+    <pre>
+        sudo nano /etc/mongod.conf
+    </pre>
+</code>
+
+et ajoutez l'adresse IP du serveur dans la ligne bind_ip comme ceci:
+
+<code>
+    <pre>
+        # network interfaces
+        net:
+            port: 27017
+            bindIp: 127.0.0.1,152.228.217.119
+    </pre>
+</code>
+
+Remplacez **152.228.217.119** par l'adresse IP de votre serveur, puis redémarrez **MongoDB** pour appliquer les modifications.
+
+<code>
+    <pre>
+       sudo service mongod restart
+    </pre>
+</code>
+
+Vous pouvez maintenant accéder au serveur de base de données MongoDB via le réseau.
