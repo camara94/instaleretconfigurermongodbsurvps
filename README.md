@@ -243,3 +243,14 @@ Remplacez **152.228.217.119** par l'adresse IP de votre serveur, puis redémarre
 </code>
 
 Vous pouvez maintenant accéder au serveur de base de données MongoDB via le réseau.
+
+Par exemple, on peut spécifier à la fois PLAIN et SCRAM-SHA-256 comme mécanismes d'authentification, utilisez la commande suivante:
+
+<code>
+    <pre>
+       mongod --setParameter authenticationMechanisms=PLAIN,SCRAM-SHA-256 --auth
+    </pre>
+</code>
+
+## Conclusion
+**MongoDB** est une base de données **NoSQL** bien connue qui offre des **performances élevées**, une **haute disponibilité** et une mise à l'échelle automatique. Il diffère des **SGBDR** tels que **MySQL**, **PostgreSQL** et **SQLite** car il n'utilise pas **SQL** pour définir et récupérer des **données**. **MongoDB** stocke les données dans des `documents` appelés **BSON (représentation binaire de JSON avec des informations supplémentaires)**. **MongoDB** n'est disponible que pour la version Ubuntu de support à long terme 64 bits.
