@@ -32,4 +32,22 @@ mettre à jour le référentiel avec la commande apt:
     <pre>
         sudo apt-get install -y mongodb-org
     </pre>
-  </code>
+</code>
+
+ ### Étape 4 - Installez MongoDB
+ Vous pouvez maintenant installer MongoDB en tapant cette commande:
+ <code>
+    <pre>
+        sudo apt-get install -y mongodb-org
+    </pre>
+</code>
+
+Le programme d'installation d'**apt MongoDB** a créé automatiquement un fichier **mongod.service** pour **Systemd**, il n'est donc plus nécessaire de le créer manuellement.
+
+Démarrez **MongoDB** et ajoutez-le en tant que service à démarrer au démarrage:
+<code>
+    <pre>
+        sudo systemctl start mongod
+        sudo systemctl enable mongod
+    </pre>
+</code>
