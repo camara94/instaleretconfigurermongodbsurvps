@@ -63,14 +63,7 @@ Vérifiez maintenant que MongoDB a été démarré sur le port 27017 avec la com
 ![image 1](images/1.png)
 
 ## Configurer le nom d'utilisateur et le mot de passe MongoDB
-
-
-<code>
-    <pre>
-        mongo
-    </pre>
-</code>
-
+### Étape 1 - Ouvrez la coque mongo
 Avant de configurer un nom d'utilisateur et un mot de passe pour MongoDB, vous devez ouvrir le shell MongoDB sur votre serveur. Vous pouvez vous connecter en tapant:
 
 <code>
@@ -87,3 +80,35 @@ Si vous obtenez une erreur Échec de l'initialisation globale: BadValue Non vali
         mongo 
     </pre>
 </code>
+
+### Étape 2 - Basculez vers l'administrateur de la base de données
+Une fois que vous êtes dans le shell MongoDB, passez à la base de données nommée admin:
+
+<code>
+    <pre>
+        use admin
+    </pre>
+</code>
+
+### Étape 3 - Créez l'utilisateur root
+Créez l'utilisateur root avec cette commande:
+
+<code>
+    <pre>
+        db.createUser({user:"admin", pwd:"admin123", roles:[{role:"root", db:"admin"}]})
+    </pre>
+</code>
+
+Desc: crée l'utilisateur **admin** avec le mot de passe **admin123** et avoir l'autorisation rôle en tant que **root** de la base de données est **admin**.
+
+![use](images/2.png)
+
+Tapez maintenant <code>exit</code> pour quitter le shell MongoDB.
+
+<code>
+    <pre>
+        exit
+    </pre>
+</code>
+
+Et vous êtes de retour sur le shell de Linux.
