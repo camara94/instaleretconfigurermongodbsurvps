@@ -160,3 +160,46 @@ et connectez-vous au shell MongoDB avec cette commande:
 
 et vous verrez la sortie comme ceci:
 ![3](images/3.png)
+
+## Activer l'accès externe et configurer le pare-feu UFW
+**UFW** est le pare-feu par défaut dans Ubuntu. Dans ce chapitre, je montrerai comment configurer UFW pour autoriser l'accès externe à MongoDB.
+
+Vérifiez l'état de l'UFW
+
+<code>
+    <pre>
+        sudo ufw status
+    </pre>
+</code>
+
+Lorsque le résultat est:
+
+<code>
+    <pre>
+        Status: inactive
+    </pre>
+</code>
+
+Activez **UFW** avec cette commande et ouvrez d'abord le port SSH s'il est connecté par **SSH**:
+
+<code>
+    <pre>
+        sudo ufw allow ssh
+        sudo ufw enable
+    </pre>
+</code>
+
+avant de passer aux étapes suivantes.
+
+Pour des raisons de sécurité, vous ne devez autoriser l'accès au port MongoDB 27017 qu'à partir des adresses **IP** qui doivent accéder à la base de données. Par défaut, localhost est toujours en mesure d'y accéder, donc pas besoin d'ouvrir le port MongoDB pour **IP 127.0.0.1**.
+
+### Syntaxe du pare-feu UFW
+
+Pour autoriser l'accès de l'IP externe 192.168.1.10 à MongoDB, utilisez cette commande:
+
+<code>
+    <pre>
+        sudo ufw allow ssh
+        sudo ufw enable
+    </pre>
+</code>
